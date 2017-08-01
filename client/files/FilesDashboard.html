@@ -1,0 +1,17 @@
+<template name="FilesDashboard">
+	<h4>File Count: ({{fileCount}})</h4>
+	{{#if $.Session.get 'newFile'}}
+		{{> NewFile}}
+	{{else}}
+		<button class="new-file">New File</button>
+	{{/if}}
+	<section class="files">
+		{{# if Template.subscriptionsReady}}
+			{{#each files}}
+				{{> FileSummary}}
+			{{/each}}
+		{{else}}
+		<p>Loading</p>
+		{{/if}}
+	</section>
+</template>

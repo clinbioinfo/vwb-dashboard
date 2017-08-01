@@ -1,0 +1,32 @@
+<template name="FileSummary">
+	<article class="filesummary">
+		<h4>{{basename}}</h4>
+		{{#if editMode}}
+			{{> quickForm collection="Files" id=updateFileSummaryId type="update" doc=this autosave=true}}		
+		{{else}}
+			<table class="table table-stiped table-condensed">
+				<tbody>
+					<tr>
+						<td>Path</td>
+						<td>{{path}}</td>
+					</tr>
+<!-- 					<tr>
+						<td>Desc</td>
+						<td>{{desc}}</td>
+					</tr> -->
+					<tr>
+						<td>Byte Size</td>
+						<td>{{bytes_size}}</td>
+					</tr>
+					<tr>
+						<td>Owner</td>
+						<td>{{owner}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<a href="/file-details/{{uuid}}">View Details</a>
+		{{/if}}
+		<i class="fa fa-pencil"></i>
+		<!-- <i class="fa fa-trash"></i> -->
+	</article>
+</template>

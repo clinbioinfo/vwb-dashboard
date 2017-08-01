@@ -1,5 +1,5 @@
 {
-  "name": "file-system-dashboard",
+  "name": "metadata-enabled-file-repository",
   "private": true,
   "scripts": {
     "start": "meteor run"

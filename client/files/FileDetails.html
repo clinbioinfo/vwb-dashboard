@@ -36,6 +36,50 @@
         <td>group</td>
         <td>{{file.group}}</td>
       </tr>
+      <tr>
+        <td>Checksum</td>
+        <td>{{file.checksum}}</td>
+      </tr>
     </tbody>
   </table>
+  <div class="annotations">
+    <h4>Annotations ({{file.annotations.length}})</h4>
+    {{#if $.Session.get 'newAnnotation'}}
+      {{> NewAnnotation }}
+    {{else}}
+      <button id="newAnnotationButton" title="Add new annotation">Add</button>
+    {{/if}}
+    {{#each file.annotations}}
+      {{> Annotation}}
+    {{else}}
+      <!-- <p>No annotations yet.</p> -->
+    {{/each}}
+  </div>  
+  <div class="description">    
+    <h4>Description</h4>
+    {{#if file.desc}}      
+      <i class="fa fa-pencil edit-description"></i>
+      <p>{{file.desc}}</p>
+    {{else}}
+      {{#if $.Session.get 'newDescription'}}
+        {{> NewDescription}}
+      {{else}}
+        <button id="newDescriptionButton" title="Add new description">Add</button>
+        <p>No description yet.</p>
+      {{/if}}        
+    {{/if}}
+  </div>  
+  <div class="comments">
+    <h4>Comments ({{file.comments.length}})</h4>
+    {{#if $.Session.get 'newComment'}}
+      {{> NewComment }}
+    {{else}}
+      <button id="newCommentButton" title="Add new comment">Add</button>
+    {{/if}}
+    {{#each file.comments}}
+      {{> Comment}}
+    {{else}}
+      <!-- <p>No comments yet.</p> -->
+    {{/each}}      
+  </div>  
 </template>

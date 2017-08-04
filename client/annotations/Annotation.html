@@ -1,0 +1,10 @@
+<template name="Annotation">
+	<article class="annotation">
+		<p>{{annotation.key}}</p>
+		{{#each annotation.values}}
+			{{value}}
+		{{else}}
+			<p>No values</p>
+		{{/each}}
+	</article>
+</template>

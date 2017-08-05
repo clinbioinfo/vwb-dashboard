@@ -5,4 +5,4 @@ Template.Comment.helpers({
 });
 
 Template.Comment.events({
-});
+});	

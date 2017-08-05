@@ -1,10 +1,18 @@
 <template name="NewAnnotation">
 	<div class="new-annotation-container">
-		<p>Add a new annotation</p>
-		<!-- <i class="fa fa-close"></i> -->
-		<!-- {{> quickForm collection="Annotations" id="insertAnnotationForm" type="insert" class="new-annotation-form"}} -->
-	    <!-- <i class="fa fa-times closeNewAnnotation"></i> -->
-		<button id="newAnnotationSubmitButton" class="btn-primary">Submit</button>
-		<button id="newAnnotationCancelButton" class="btn-default">Cancel</button>	    
+		<form id="new_annotation_form">
+			<p>Add a new annotation</p>
+			<!-- <i class="fa fa-close"></i> -->
+			<!-- {{> quickForm collection="Annotations" id="insertAnnotationForm" type="insert" class="new-annotation-form"}} -->
+		    <!-- <i class="fa fa-times closeNewAnnotation"></i> -->
+		    <input type="text" name="new_annotation_key_text" placeholder="Enter key"/>
+		    <br>
+		    <input type="text" name="new_annotation_value_text" placeholder="Enter value"/>
+		    <br>
+		    <span class="lower-right-span">
+				<button id="newAnnotationSubmitButton" class="btn-primary">Submit</button>
+				<button id="newAnnotationCancelButton" class="btn-default">Cancel</button>	    
+			</span>
+		</form>
 	</div>
 </template>

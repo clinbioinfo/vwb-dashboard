@@ -4,7 +4,7 @@ Files.allow({
 	insert: function(userId, doc){
 		return !!userId;
 	},
-	update: function (userId, doc){
+	update: function (userId, doc, fieldNames, modified){
 		return !!userId;
 	}
 });

@@ -9,26 +9,23 @@ Template.NewComment.onCreated(function (){
 	})
 });
 
-Template.NewComment.helpers({
-});
+Template.NewComment.helpers({});
 
-Template.FileDetails.events({
+Template.NewComment.events({
 	
-	'submit #newCommentSubmitButton': function (event){
+	'submit #new_comment_form'(event){
+            
+		event.preventDefault();
 
 		console.log("New Comment Submit Button clicked on");
 
-		const comment_text = event.target.comment.value;
-		const date = new Date();
-		const author = this.userId
+		const target = event.target;
 
-		check(comment_text, String)
-
-		if (! Meteor.userId()){
-			throw new Meteor.Error('not-authorized');
-		}
+		const comment_text = target.new_comment_textarea.value;
 		
-		event.target.comment.value = '';
+		console.log(comment_text);
+
+		target.new_comment_textarea.value = '';
 
 		/*
 			Add logic for submitting this new comment
@@ -39,10 +36,15 @@ Template.FileDetails.events({
 			4. comment text
 		*/
 
+		var currentFile = Session.get('currentFile');
+
+
+		Meteor.call('insert.new.comment', comment_text, currentFile);
+
 		/* Make sure to change the state so that the new comment form will be closed. */
 		Session.set('newComment', false);
 	},
-	'click #newCommentCancelButton': function (){
+	'click #newCommentCancelButton'(){
 
 		console.log("New Comment Cancel Button clicked on");
 		/* Make sure to change the state so that the new comment form will be closed. */

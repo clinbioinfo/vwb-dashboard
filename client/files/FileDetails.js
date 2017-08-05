@@ -12,14 +12,23 @@ Template.FileDetails.onCreated(function (){
 
 Template.FileDetails.helpers({
 	file: () => {
+
 		var id = FlowRouter.getParam('id');
 		// alert(id);
-		return Files.findOne({uuid:id});
+
+		var currentFile = Files.findOne({uuid:id});
+
+		Session.set('currentFile', currentFile);
+		// console.log("basename of current file is " + currentFile.basename);
+
+		return currentFile;
 	}
 });
 
 Template.FileDetails.events({
-	'click #newAnnotationButton': function (){
+	'click #newAnnotationButton'(event){
+
+		event.preventDefault();
 
 		/* Open the New Annotation form */
 		Session.set('newAnnotation', true);
@@ -29,7 +38,9 @@ Template.FileDetails.events({
 		Session.set('newComment', false);
 
 	},
-	'click #newDescriptionButton': function (){
+	'click #newDescriptionButton'(event){
+
+		event.preventDefault();
 
 		/* Open the New Description form */
 		Session.set('newDescription', true);	
@@ -38,7 +49,9 @@ Template.FileDetails.events({
 		Session.set('newAnnotation', false);
 		Session.set('newComment', false);
 	},
-	'click #newCommentButton': function (){
+	'click #newCommentButton'(event, template){
+
+		event.preventDefault();
 
 		/* Open the New Comment form */
 		Session.set('newComment', true);	

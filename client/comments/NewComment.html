@@ -1,9 +1,14 @@
 <template name="NewComment">
 	<div class="new-comment-container">
-		<p>Add a new comment</p>
+		<form id="new_comment_form">
+			<p>Add a new comment</p>
 		<!-- <i class="fa fa-close"></i> -->
 		<!-- {{> quickForm collection="Annotations" id="insertAnnotationForm" type="insert" class="new-annotation-form"}} -->
-		<button id="newCommentSubmitButton" class="btn-primary">Submit</button>
-		<button id="newCommentCancelButton" class="btn-default">Cancel</button>	    
+			<textarea class="new-comment-textarea" name="new_comment_textarea" rows="4" cols="100" placeholder="Please type your comment here."></textarea>
+			<span class="lower-right-span">
+				<button id="newCommentSubmitButton" class="btn-primary lower-right-button">Submit</button>
+				<button id="newCommentCancelButton" class="btn-default lower-right-button">Cancel</button>	   
+			</span>
+		</form>
 	</div>
 </template>

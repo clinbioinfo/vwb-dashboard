@@ -3,7 +3,9 @@ Template.FilesDashboard.onCreated(function (){
 	var self = this;
 	self.autorun(function(){
 		self.subscribe('files');
-	})
+	});
+
+	Session.set('currentFile', null);
 });
 
 Template.FilesDashboard.helpers({

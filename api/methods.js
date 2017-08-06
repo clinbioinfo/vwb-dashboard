@@ -15,7 +15,7 @@ Meteor.methods({
 		const owner    = Meteor.userId();
 		const username = Meteor.userId().username;
 
-		const commentObj ={
+		var commentObj ={
 			'text' : comment_text,
 			'date' : date,
 			'owner' : owner,
@@ -34,6 +34,7 @@ Meteor.methods({
 	},
 	'insert.new.annotation'(key, value, currentFile){
 
+
 		if (! Meteor.userId()){
 			throw new Meteor.Error('not-authorized');
 		}
@@ -43,16 +44,17 @@ Meteor.methods({
 
 		const date     = new Date();
 		const owner    = Meteor.userId();
-		const username = Meteor.userId().username;
+		const username = Meteor.user().username;
+		const email = Meteor.user().emails[0].address;
 
-		const annotationObj ={
+		var annotationObj ={
 			'key'      : key,
 			'value'    : value,
 			'date'     : date,
 			'owner'    : owner,
-			'username' : username
+			'email'    : email
 		};
-	
+
 
 		console.log("Will attempt to update file " + currentFile.basename + " by adding annotation key: " + key + " with value: " + value);
 

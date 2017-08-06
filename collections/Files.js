@@ -9,6 +9,54 @@ Files.allow({
 	}
 });
 
+CommentsSchema = new SimpleSchema({
+	text : {
+		type : String,
+		label : 'Comment'
+	},
+	username : {
+		type : String,
+		label : 'Username'
+	},
+	date : {
+		type : Date,
+		label : 'Date'
+	},
+	owner : {
+		type : String,
+		label : 'Owner ID'
+	} 
+});
+
+AnnotationsSchema = new SimpleSchema({
+	key : {
+		type : String,
+		label : 'Key'
+	},
+	value : {
+		type : String,
+		label : 'Value'
+	},
+	username : {
+		type : String,
+		label : 'Username',
+		optional: true
+	},
+	email : {
+		type : String,
+		label : 'Email',
+		optional: true
+	},
+	date : {
+		type : Date,
+		label : 'Date'
+	},
+	owner : {
+		type : String,
+		label : 'Owner ID',
+		optional: true
+	} 
+});
 
 FilesSchema = new SimpleSchema({
 	basename: {
@@ -101,6 +149,12 @@ FilesSchema = new SimpleSchema({
 	md5checksum:{
 		type: String,
 		optional: true
+	},
+	comments : {
+		type : [CommentsSchema]
+	},
+	annotations : {
+		type : [AnnotationsSchema]
 	}
 });
 

@@ -14,12 +14,13 @@ Meteor.methods({
 		const date     = new Date();
 		const owner    = Meteor.userId();
 		const username = Meteor.userId().username;
+		const email    = Meteor.user().emails[0].address;
 
-		var commentObj ={
-			'text' : comment_text,
-			'date' : date,
+		var commentObj = {
+			'text'  : comment_text,
+			'date'  : date,
 			'owner' : owner,
-			'username' : username
+			'email' : email
 		};
 
 
@@ -29,7 +30,7 @@ Meteor.methods({
 			Files.update({"uuid": currentFile.uuid}, {$push: {"comments" : commentObj}});
 		}
 		catch (ex){
-			throw new Error("Caught some exception while attempting to update file: " + currentFile.basename + " with the following comment: " + comment_text);
+			throw new Error("Caught some exception while attempting to add comment the following comment : " + comment_text + " to file: " + currentFile.basename + ".");
 		}
 	},
 	'insert.new.annotation'(key, value, currentFile){
@@ -45,9 +46,9 @@ Meteor.methods({
 		const date     = new Date();
 		const owner    = Meteor.userId();
 		const username = Meteor.user().username;
-		const email = Meteor.user().emails[0].address;
+		const email    = Meteor.user().emails[0].address;
 
-		var annotationObj ={
+		var annotationObj =  {
 			'key'      : key,
 			'value'    : value,
 			'date'     : date,

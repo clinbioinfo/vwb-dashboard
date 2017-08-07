@@ -16,7 +16,8 @@ CommentsSchema = new SimpleSchema({
 	},
 	username : {
 		type : String,
-		label : 'Username'
+		label : 'Username',
+		optional : true
 	},
 	date : {
 		type : Date,
@@ -24,8 +25,14 @@ CommentsSchema = new SimpleSchema({
 	},
 	owner : {
 		type : String,
-		label : 'Owner ID'
-	} 
+		label : 'Owner ID',
+		optional: true
+	}, 
+	email : {
+		type : String,
+		label : 'Email',
+		optional: true
+	},
 });
 
 AnnotationsSchema = new SimpleSchema({

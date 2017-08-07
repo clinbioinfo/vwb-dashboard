@@ -21,10 +21,6 @@ Template.NewComment.events({
 		const target = event.target;
 
 		const comment_text = target.new_comment_textarea.value;
-		
-		console.log(comment_text);
-
-		target.new_comment_textarea.value = '';
 
 		/*
 			Add logic for submitting this new comment
@@ -35,10 +31,20 @@ Template.NewComment.events({
 			4. comment text
 		*/
 
-		var currentFile = Session.get('currentFile');
+		if ((comment_text !== undefined) && (comment_text !== '')){
+
+			console.log(comment_text);
+
+			var currentFile = Session.get('currentFile');
 
 
-		Meteor.call('insert.new.comment', comment_text, currentFile);
+			Meteor.call('insert.new.comment', comment_text, currentFile);
+		}
+		else {
+			console.log("The comment text was not defined");
+		}
+
+		target.new_comment_textarea.value = '';
 
 		/* Make sure to change the state so that the new comment form will be closed. */
 		Session.set('newComment', false);

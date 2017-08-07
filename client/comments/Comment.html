@@ -1,6 +1,9 @@
 <template name="Comment">
-	<article class="comment">
-		<p>{{username}} {{date}}</p>
-		<p>{{text}}</p>
-	</article>
+	<div class="comments">
+		<span class="comment_author"><a href="{{email}}">{{email}}</a></span> <span class="comment_date">{{date}}</span>
+		<br>
+		<span class="comment_text">
+			<textarea class="comment_textarea" rows="5" cols="200" readonly>{{text}}</textarea>
+		</span>
+	</div>
 </template>

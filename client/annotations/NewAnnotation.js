@@ -25,13 +25,26 @@ Template.NewAnnotation.events({
 
 		const annotation_value_text = target.new_annotation_value_text.value;
 	
+		if ((annotation_key_text !== undefined) && (annotation_value_text !== undefined)){
+
+			if ((annotation_key_text === '') || (annotation_value_text === '')){
+				console.log("Need to provide values for both annotation key and value");
+			}
+			else {
+				var currentFile = Session.get('currentFile');
+
+				Meteor.call('insert.new.annotation', annotation_key_text, annotation_value_text, currentFile);
+			}
+		}
+		else {
+			console.log("Both annotation key and value should be defined");
+		}
+
+
 		target.new_annotation_key_text.value = '';
 
 		target.new_annotation_value_text.value = '';
 
-		var currentFile = Session.get('currentFile');
-
-		Meteor.call('insert.new.annotation', annotation_key_text, annotation_value_text, currentFile);
 
 		Session.set('newAnnotation', false);
 	},

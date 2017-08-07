@@ -1,10 +1,12 @@
 <template name="Annotation">
-	<article class="annotation">
-		<p>{{annotation.key}}</p>
-		{{#each annotation.values}}
-			{{value}}
-		{{else}}
-			<p>No values</p>
-		{{/each}}
-	</article>
+	<div class="annotations">
+		<span class="annotation_author"><a href="{{email}}">{{email}}</a></span> <span class="annotation_date">{{date}}</span>
+		<br>
+		<span class="annotation_key">
+			<label for="annotation_key">Key:</label><input type="text" name="annotation_key" readonly value="{{key}}">
+			<br>
+			<label for="annotation_value">Value:</label><input type="text" name="annotation_value" readonly value="{{value}}">
+			</span>
+		<br>
+	</div>
 </template>

@@ -33,6 +33,14 @@
           <td>{{file.path}}</td>
         </tr>
         <tr>
+          <td>hostname</td>
+          <td>{{file.hostname}}</td>
+        </tr>
+        <tr>
+          <td>IP address</td>
+          <td>{{file.ip_address}}</td>
+        </tr>
+        <tr>
           <td>date created</td>
           <td>{{file.date_created}}</td>
         </tr>
@@ -60,7 +68,7 @@
     </table>
   </div>
   <div class="annotations">
-    <h4>Annotations ({{file.annotations.length}})</h4>
+    <h4>Annotations ({{file.annotations.length}})</h4>    
     {{#if $.Session.get 'newAnnotation'}}
       {{> NewAnnotation }}
     {{else}}

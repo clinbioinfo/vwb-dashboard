@@ -66,6 +66,10 @@ AnnotationsSchema = new SimpleSchema({
 });
 
 FilesSchema = new SimpleSchema({
+	uuid: {
+		type : String,
+		label : 'Unique Identifier (system-derived)'
+	},
 	basename: {
 		type : String,
 		label : 'Basename'
